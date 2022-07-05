@@ -105,3 +105,7 @@ Borrar credenciales almacenadas
 **`git tag -l "v1.4.2.*"`** Buscar etiquetas de acuerdo a un patrón en particular
 
 **`git push origin v1.4`** Compartiendo etiquetas
+
+**`git tag -d tag_name`** Borrando Tag local
+
+**`git push --delete origin tagname`** Borrando Tag remoto
