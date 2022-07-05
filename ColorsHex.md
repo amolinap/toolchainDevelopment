@@ -19,3 +19,7 @@
 | | |
 |:-------------:|:-------------:|
 | <span style="color:#FF3333">#FF3333</span> | <span style="color:#cc0000">#cc0000 </span> |
+
+<div style="background-color:#cc0000; padding:10px; color:white">#CC0000</div>
+
+<span style="color:#cc0000">#cc0000 </span>
