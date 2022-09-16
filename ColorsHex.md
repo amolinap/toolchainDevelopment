@@ -14,3 +14,4 @@
 | ![#82FA58](images/colors/82FA58.png) `#82FA58 ` | ![#F4FA58](images/colors/F4FA58.png) `#F4FA58 ` |
 | ![#98A4AE](images/colors/98A4AE.png) `#98A4AE 7543 ` | ![#B7C9D3](images/colors/B7C9D3.png) `#B7C9D3 5445 ` |
 | ![#084B8A](images/colors/084B8A.png) `#084B8A ` | ![#00BFFF](images/colors/00BFFF.png) `#00BFFF ` |
+| ![#084B8A](images/colors/084B8A.png) `#FA5858 ` | ![#00BFFF](images/colors/00BFFF.png) `#00BFFF ` |
