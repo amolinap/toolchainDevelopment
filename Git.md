@@ -132,3 +132,25 @@ or, if you want to leave it in your working tree and have done step 0
 3.   git rm --cached a/submodule
 3bis mv a/submodule_tmp a/submodule
 ```
+
+## Problemas SSH
+
+### WARNING: UNPROTECTED PRIVATE KEY FILE!
+
+```
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0664 for '/Users/----/.ssh/id_rsa' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "/Users/----/.ssh/id_rsa": bad permissions
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+```
+
+Solución:
+
+**`chmod 600 ~/.ssh/id_rsa`**
+
+**`chmod 600 ~/.ssh/id_rsa.pub`**
