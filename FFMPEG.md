@@ -27,3 +27,12 @@ brew install ffmpeg
 ### Comandos básicos:
 
 **`ffmpeg -i video.m4v video.mp4`** Cambiar extensión de video
+
+**`ffmpeg -i SPARTAAM_CENCASANT.mov -vf format=yuv420p SPARTAAM_CENCASANT.mp4`** Videos con vista miniatura
+
+**`ffmpeg -i dia-01.mov -vf 'setpts=1/32*PTS' output3.mp4`** Velocidad 32x
+**`ffmpeg -i el_video.avi -an sin_audio.avi`** Video sin audio
+
+**`ffmpeg -start_number 439 -i IMG_8%03d.jpg -s 720x480 -b 3000k video.mp4`** Generar videos con imagenes
+
+**`ffmpeg -i AeropuertoVeracruz.mpg -b 2000k AeropuertoVeracruz.mp4`** Comprimir video 8.64 GB a 1.62 GB
