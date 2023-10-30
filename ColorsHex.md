@@ -1,5 +1,15 @@
 # Colores Hexadecimales
 
+- ![#00B0F0](https://placehold.it/150x40/00B0F0/FFFFFF?text=00B0F0)
+- ![#FF3333](https://placehold.it/150x40/FF3333/FFFFFF?text=FF3333)
+- ![#cc0000](https://placehold.it/150x40/cc0000/FFFFFF?text=cc0000)
+- ![#000000](https://placehold.it/150x40/000000/FFFFFF?text=000000)
+- ![#FFFFFF](https://placehold.it/150x40/FFFFFF/000000?text=FFFFFF)
+- ![#bbbbbb](https://placehold.it/150x40/bbbbbb/FFFFFF?text=bbbbbb)
+- ![#b0b0b0](https://placehold.it/150x40/b0b0b0/FFFFFF?text=b0b0b0)
+- ![#696969](https://placehold.it/150x40/696969/FFFFFF?text=696969)
+
+
 | | |
 |:-------------:|:-------------:|
 | ![#FF3333](images/colors/FF3333.png) `#FF3333` | ![#cc0000](images/colors/CC0000.png) `#CC0000` |
