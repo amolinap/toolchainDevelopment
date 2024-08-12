@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8"/>
+  <title>IntelliGen Communications protocol</title>
+  <link href="css/prism.css" rel="stylesheet" />
+  <link href="css/help.css" rel="stylesheet" />
+</head>
+
+<body>
+  <script src="css/prism.js"></script>
+  
+  <a href="index.html">Menú</a>
+  
+  <p><toctitle id="tabla_contenido">Tabla de Contenido</toctitle>
+    <toc1><a href="#csharp-asp">C# ASP .Net</a></toc1>
+    <toc2><a href="#csharp-instancia">C# - Instancia</a></toc2>
+    <toc2><a href="#csharp-sql">C# - SQL</a></toc2>
+    <div class="page-break"></div>
+  </p>
+
+  <hr />
+  
+  <div class="row">
+
+    <h1 id="csharp-asp">Lenguaje C#</h1>
+  
+    <p>Esta página muestra cógido C# que sirve como ayuda para la programación de aplicaciones
+      usando ASP .Net.</p>
+
+    <div id="csharp-instancia">
+      <br>
+      <h2>Clase - Instancia</h2>
+      <p align="justify">
+        Se muestra ejemplo de Instancia en este caso para la clase con acceso a la Base de Datos
+      </p>
+      <pre>
+      <code class="language-csharp">
+  public partial class DataAccess
+  {
+      DBPostgreSQL dataBase;
+
+      public static DataAccess Instancia()
+      {
+          DataAccess dataAccess = (DataAccess)HttpContext.Current.Session["SessionDataAccess"];
+
+          if (dataAccess == null)
+          {
+              HttpContext.Current.Session["SessionDataAccess"] = dataAccess = new DataAccess();
+          }
+
+          return dataAccess;
+      }
+
+      protected DataAccess()
+      {
+          dataBase = new DBPostgreSQL(WebLibrary.Properties.Settings.Default.DB_User, "xxxxxx", WebLibrary.Properties.Settings.Default.DB_Name, WebLibrary.Properties.Settings.Default.DB_IP, int.Parse(WebLibrary.Properties.Settings.Default.DB_Port));
+      }
+  }
+      </code>
+      </pre>
+    </div>
+    <div id="csharp-sql">
+      <br>
+      <h2>Clase - SQL</h2>
+      <p align="justify">
+        Se muestra ejemplo de consulta a Base de Datos usando la Instancia
+      </p>
+      <pre>
+      <code class="language-csharp">
+  public AeronaveMantenimiento AeronaveMantenimientVer(int id_man)
+  {
+      string sql = "select id_ama, id_aer, lugar, fechaman, situacion, descripcion from AeronaveMantenimientos where id_ama = " + id_man + ";";
+
+      DataTable dt = dataBase.RunQueryDataTable(sql);
+
+      AeronaveMantenimiento mantenimiento = new AeronaveMantenimiento();
+
+      if (dt.Rows.Count > 0)
+      {
+          foreach (DataRow row in dt.Rows)
+          {
+              mantenimiento.IdMantenimiento = int.Parse(row[0].ToString());
+              mantenimiento.IdAeronave = int.Parse(row[1].ToString());
+              mantenimiento.Lugar = row[2].ToString();
+              mantenimiento.Fecha = DateTime.Parse(row[3].ToString()).ToString("dd/MM/yyyy");
+              mantenimiento.NombrePrueba = row[4].ToString();
+              mantenimiento.Observaciones = row[5].ToString();
+          }
+      }
+
+      return mantenimiento;
+  }
+      </code>
+      </pre>
+    </div>
+  </div>
+</body>
+</html>

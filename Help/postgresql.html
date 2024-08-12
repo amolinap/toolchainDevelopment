@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8"/>
+  <title>IntelliGen Communications protocol</title>
+  <link href="css/prism.css" rel="stylesheet" />
+  <link href="css/help.css" rel="stylesheet" />
+</head>
+
+<body>
+  <script src="css/prism.js"></script>
+  
+  <a href="index.html">Menú</a>
+  
+  <p><toctitle id="tabla_contenido">Tabla de Contenido</toctitle>
+    <toc1><a href="#sql-postgresl">PostgreSQL</a></toc1>
+    <toc2><a href="#sql-bd">SQL - Base de Datos</a></toc2>
+    <toc2><a href="#sql-insert">SQL - Insert</a></toc2>
+    <div class="page-break"></div>
+  </p>
+
+  <hr />
+
+  <div class="row">
+
+    <h1 id="sql-postgresl">PostgreSQL</h1>
+  
+    <p>Esta página muestra sentencias SQL para PostgreSQL como ayuda para la programación de aplicaciones
+      usando ASP .Net.</p>
+  
+  <div id="sql-bd">
+  <h2>SQL - Base de Datos</h2>
+  <p align="justify">
+    Se muestra ejemplo de Instancia en este caso para la clase con acceso a la Base de Datos
+  </p>
+  <pre>
+    <code class="language-sql">
+  -- Database: "DBCONTROL"
+
+  -- DROP DATABASE "DBCONTROL";
+  
+  CREATE DATABASE "DBCONTROL"
+    WITH OWNER = "Administrador"
+          ENCODING = 'LATIN9'
+          TABLESPACE = pg_default
+          LC_COLLATE = 'C'
+          LC_CTYPE = 'C'
+          CONNECTION LIMIT = -1;
+    </code>
+    </pre>
+  </div>
+
+  <div id="sql-table">
+    <h2>SQL - Create Table</h2>
+    <p align="justify">
+      Se muestra ejemplo de Instancia en este caso para la clase con acceso a la Base de Datos
+    </p>
+    <pre>
+      <code class="language-sql">
+  Create table Manufactura_celda
+  (
+    id_cel Integer NOT NULL,
+    id_aer Integer NOT NULL,
+    id_man_f Integer NOT NULL,
+    id_man_c Integer NOT NULL,
+    realizada boolean DEFAULT false,
+    avance Integer DEFAULT 0,           --0 - 100 %
+    observaciones character varying(10000),
+    Status Integer DEFAULT 0,           --0: Eliminado, 1: No Eliminado
+    HoraUpdate time without time zone,--Hora de alta
+    FechaUpdate Date,         --Fecha de alta
+    Hora time without time zone,--Hora de alta
+    Fecha Date,         --Fecha de alta
+    primary key (id_cel)
+  ) With Oids;
+      </code>
+    </pre>
+  </div>
+
+  <div id="sql-insert">
+    <h2>SQL - Insert</h2>
+    <p align="justify">
+      Se muestra ejemplo de Instancia en este caso para la clase con acceso a la Base de Datos
+    </p>
+    <pre>
+      <code class="language-sql">
+  insert into Manufactura_celda(id_cel, id_aer, id_man_f, id_man_c, realizada, avance, observaciones, status, horaupdate, fechaupdate, hora, fecha) 
+  values(0, 0, 1, 1, false, 0, 'N/A', 0, '06:00:00', '08/06/1982', '06:00:00', '08/06/1982');
+      </code>
+    </pre>
+  </div>
+
+</div>
+</body>
+</html>

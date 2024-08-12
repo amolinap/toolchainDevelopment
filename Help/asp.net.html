@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8"/>
+  <title>IntelliGen Communications protocol</title>
+  <link href="css/prism.css" rel="stylesheet" />
+  <link href="css/help.css" rel="stylesheet" />
+</head>
+
+<body>
+  <script src="css/prism.js"></script>
+  
+  <a href="index.html">Menú</a>
+  
+  <p><toctitle id="tabla_contenido">Tabla de Contenido</toctitle>
+    <toc1><a href="#asp-net">ASP .Net</a></toc1>
+    <toc2><a href="#asp-grid-item">ASP - GridView ItemTemplate</a></toc2>
+    <toc2><a href="#asp-time">ASP - GridView Time</a></toc2>
+    <div class="page-break"></div>
+  </p>
+
+  <hr />
+
+  <div class="row">
+
+    <h1 id="asp-net">ASP .Net</h1>
+  
+    <p>Esta página muestra sentencias SQL para PostgreSQL como ayuda para la programación de aplicaciones
+      usando ASP .Net.</p>
+
+    <div id="asp-grid-item">
+      <h2>Gridview - ItemTemplate</h2>
+      <p align="justify">
+        Se validan controles Enabled y Visible usando código C#
+      </p>
+      <pre>
+      <code class="language-aspnet">
+  &lt;ItemTemplate&gt;
+    &lt;asp:DropDownList runat="server" ID="cbStatus" AppendDataBoundItems="true" Width="100px" Enabled='&lt;%# IsVisible() %&gt;'&gt; &lt;/asp:DropDownList&gt;
+    &lt;asp:Button runat="server" ID="btActualizar" Text="Actualizar" CommandName="EnAlmacenUpdate" CommandArgument='&lt;%# Eval("id_usu") %&gt;' Visible='&lt;%# IsVisible() %&gt;' Font-Size="10px" Width="60px"&gt;&lt;/asp:Button&gt;
+    &lt;br /&gt;
+  &lt;/ItemTemplate&gt;
+      </code>
+      <code class="language-csharp">
+  public bool IsVisible()
+  {
+      if (DataAccess.Instancia().UsuarioVerNivel(SessionState.Current.User) == (int)TipoUsuario.Administrador)
+      {
+          return true;
+      }
+      else
+      {
+          return false;
+      }
+  }
+      </code>
+      </pre>
+    </div>
+
+    <div id="asp-time">
+      <h2>Gridview - Time</h2>
+      <p align="justify">
+        Se validan controles Enabled y Visible usando código C#
+      </p>
+      <pre>
+      <code class="language-aspnet">
+  &lt;asp:TemplateField HeaderText="FECHA" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="50px" ControlStyle-Font-Bold="true" ControlStyle-ForeColor="Blue"&gt;
+    &lt;ItemTemplate&gt;
+      &lt;asp:Label runat="server" ID="lbFecha" Text='&lt;%#Eval("Fecha", "{0:dd/MM/yyyy}")%&gt;'&gt;&lt;/asp:Label&gt;
+    &lt;/ItemTemplate&gt;
+  &lt;/asp:TemplateField&gt;
+
+&lt;asp:TemplateField HeaderText="FECHA" ItemStyle-HorizontalAlign="Center"&gt;
+  &lt;ItemTemplate&gt;
+    &lt;asp:Label runat="server" ID="lbFecha" Text='&lt;%#  Eval("fecha", "{0:MM/dd/yyyy}") +" a las "+Eval("hora", "{0:HH:mm:ss}")%&gt;' Font-Size="12px"&gt;&lt;/asp:Label&gt;
+  &lt;/ItemTemplate&gt;
+&lt;/asp:TemplateField&gt;
+      </code>
+      </pre>
+    </div>
+
+  </div>
+</body>
+</html>
