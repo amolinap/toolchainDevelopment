@@ -111,6 +111,18 @@ Borrar credenciales almacenadas
 **`git push --delete origin tagname`** Borrando Tag remoto
 
 &nbsp;
+## Borrar archivos y directorios
+
+**`rm -d`** Elimina un directorio vacío utilizando el comando rm
+
+**`rm -r`** Elimina un directorio no vacío y su contenido
+
+**`rm -f`** Ignora cualquier aviso al eliminar un archivo protegido contra escritura
+
+**`rm -rf`** Ignora cualquier consulta al eliminar una carpeta no vacía protegida contra escritura
+
+
+&nbsp;
 ## Submodulos
 
 There was no Porcelain way to say "I no longer am interested in this submodule", once you express your interest in a submodule with "git submodule init".
