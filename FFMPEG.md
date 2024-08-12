@@ -24,6 +24,17 @@ A complete, cross-platform solution to record, convert and stream audio and vide
 brew install ffmpeg
 ```
 
+### Install or update ffmpeg
+
+Error while run command ffmpeg: Library not loaded: '/opt/homebrew/opt/mbedtls/lib/libmbedcrypto.13.dylib'
+
+brew uninstall librist --ignore-dependencies
+brew uninstall mbedtls --ignore-dependencies
+brew reinstall ffmpeg
+
+brew uninstall --force librist
+brew uninstall --force mbedtls
+
 ### Comandos básicos:
 
 **`ffmpeg -i video.m4v video.mp4`** Cambiar extensión de video
