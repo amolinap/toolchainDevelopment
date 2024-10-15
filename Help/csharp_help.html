@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8"/>
+  <title>C#</title>
+  <link href="css/prism.css" rel="stylesheet" />
+  <link href="css/help.css" rel="stylesheet" />
+</head>
+
+<body>
+  <script src="css/prism.js"></script>
+  
+  <a href="index.html">Menú</a>
+  
+  <p><toctitle id="tabla_contenido">Tabla de Contenido</toctitle>
+    <toc1><a href="#csharp-asp">C# ASP .Net</a></toc1>
+    <toc2><a href="#csharp-instancia">C# - Instancia</a></toc2>
+    <toc2><a href="#csharp-sql">C# - SQL</a></toc2>
+    <div class="page-break"></div>
+  </p>
+
+  <hr />
+  
+  <div class="row">
+
+    <h1 id="csharp-asp">Lenguaje C#</h1>
+  
+    <p>Esta página muestra cógido C# que sirve como ayuda para la programación de aplicaciones
+      usando ASP .Net.</p>
+
+    <div id="csharp-instancia">
+      <br>
+      <h2>interface</h2>
+      <p align="justify">
+        Una interface en C# es un contrato que define un conjunto de métodos y propiedades que una clase debe implementar. No contiene ninguna implementación de esos métodos; solo especifica su firma. Esto permite que diferentes clases implementen la misma interface de distintas maneras, promoviendo la interoperabilidad y el uso de polimorfismo.
+
+    Características de las interfaces en C#:
+
+    Declaración: Se declaran usando la palabra clave interface.
+    Métodos y Propiedades: Solo se pueden declarar métodos, propiedades, eventos e índices, pero no se puede proporcionar una implementación.
+    Implementación: Las clases que implementan una interface deben proporcionar la implementación para todos sus miembros.
+    Herencia Múltiple: Una clase puede implementar múltiples interfaces.
+    Uso Polimórfico: Puedes usar una variable del tipo de la interface para referenciar instancias de cualquier clase que la implemente.
+
+    Ejemplo básico:
+      </p>
+      <pre>
+      <code class="language-csharp">
+  public interface IAnimal
+  {
+      void HacerSonido();
+  }
+
+  public class Perro : IAnimal
+  {
+      public void HacerSonido()
+      {
+          Console.WriteLine("Guau!");
+      }
+  }
+
+  public class Gato : IAnimal
+  {
+      public void HacerSonido()
+      {
+          Console.WriteLine("Miau!");
+      }
+  }
+      </code>
+      </pre>
+      <p align="justify">
+      En este ejemplo, IAnimal es una interface que define el método HacerSonido(). Las clases Perro y Gato implementan esta interface de manera diferente.
+      </p>
+    </div>
+    <div id="csharp-sql">
+      <br>
+      <h2>Clase - SQL</h2>
+      <p align="justify">
+        En C#, el término Entity generalmente se refiere a una entidad en el contexto de un modelo de datos, especialmente cuando se trabaja con Entity Framework (EF), que es un ORM (Object-Relational Mapper) utilizado para interactuar con bases de datos.
+    Conceptos Clave:
+
+    Definición: Una entidad es una clase que representa una tabla en la base de datos. Cada instancia de la entidad corresponde a una fila en esa tabla.
+
+    Propiedades: Las propiedades de la entidad representan las columnas de la tabla. Por ejemplo, si tienes una tabla Clientes, la entidad podría tener propiedades como Id, Nombre, Email, etc.
+
+    Claves Primarias: Normalmente, una entidad tendrá una propiedad que actúa como la clave primaria, que identifica de manera única cada registro en la tabla.
+
+    Relaciones: Las entidades pueden tener relaciones entre ellas, como uno a muchos, muchos a muchos, etc., que se pueden representar usando propiedades de navegación.
+
+Ejemplo Básico:
+      </p>
+      <pre>
+      <code class="language-csharp">
+  public class Cliente
+  {
+    public int Id { get; set; }           // Clave primaria
+    public string Nombre { get; set; }
+    public string Email { get; set; }
+
+    // Propiedad de navegación (si hay una relación con otra entidad)
+    public ICollection<Pedido> Pedidos { get; set; }
+  }
+
+  public class Pedido
+  {
+    public int Id { get; set; }
+    public int ClienteId { get; set; }
+    public decimal Total { get; set; }
+
+    // Propiedad de navegación
+    public Cliente Cliente { get; set; }
+  }
+      </code>
+      </pre>
+      <p align="justify">
+      En este ejemplo, Cliente y Pedido son entidades que podrían corresponder a tablas en una base de datos. Esto permite a Entity Framework mapear las clases a las tablas y facilitar la interacción con la base de datos.
+      </p>
+    </div>
+    <div id="csharp-sql">
+      <br>
+      <h2>Clase - SQL</h2>
+      <p align="justify">
+En C#, un ViewModel es un patrón de diseño que se utiliza principalmente en aplicaciones basadas en la arquitectura MVVM (Model-View-ViewModel). Su propósito es servir como intermediario entre la vista (UI) y el modelo (datos y lógica de negocio), facilitando la separación de preocupaciones.
+Características del ViewModel:
+
+    Encapsulamiento de Datos: Contiene las propiedades que la vista necesita para mostrarse. En lugar de acceder directamente al modelo, la vista interactúa con el ViewModel.
+
+    Lógica de Presentación: Puede incluir lógica que determine cómo se deben mostrar los datos, como formateo o validación, sin que esto esté en la vista o en el modelo.
+
+    Interacción con la Vista: Implementa interfaces como INotifyPropertyChanged para notificar a la vista sobre cambios en las propiedades, lo que permite la actualización automática de la UI.
+
+    Comandos: Puede contener comandos (a menudo implementados con ICommand) que la vista puede enlazar para manejar eventos como clics de botones.
+
+Ejemplo Básico:
+      </p>
+      <pre>
+      <code class="language-csharp">
+  public class ClienteViewModel : INotifyPropertyChanged
+{
+    private string _nombre;
+    public string Nombre
+    {
+        get { return _nombre; }
+        set
+        {
+            if (_nombre != value)
+            {
+                _nombre = value;
+                OnPropertyChanged(nameof(Nombre));
+            }
+        }
+    }
+
+    public ICommand GuardarCommand { get; }
+
+    public ClienteViewModel()
+    {
+        GuardarCommand = new RelayCommand(Guardar);
+    }
+
+    private void Guardar()
+    {
+        // Lógica para guardar el cliente
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+    protected void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+}
+      </code>
+      </pre>
+      <p align="justify">
+      Beneficios del ViewModel:
+
+    Separación de Preocupaciones: La lógica de presentación está separada de la lógica de negocio y de la UI.
+    Pruebas: Los ViewModels son más fáciles de probar unitariamente que las vistas.
+    Reutilización: Permiten la reutilización de lógica de presentación en diferentes vistas.
+
+El uso de ViewModels es fundamental para crear aplicaciones más mantenibles y escalables, especialmente en entornos de desarrollo donde se utilizan patrones como MVVM.
+      </p>
+    </div>
+    <div id="csharp-sql">
+      <br>
+      <h2>Clase - SQL</h2>
+      <p align="justify">
+En C#, especialmente en el contexto de ASP.NET MVC (Modelo-Vista-Controlador) y ASP.NET Core, un Controller es una clase que maneja las solicitudes de los usuarios, procesa los datos y devuelve una respuesta adecuada. Es un componente clave del patrón de diseño MVC.
+Funciones del Controller:
+
+    Manejo de Solicitudes: Recibe las solicitudes HTTP (como GET, POST, PUT, DELETE) y determina cómo procesarlas.
+
+    Interacción con el Modelo: Puede interactuar con las clases del modelo para recuperar datos o realizar operaciones de negocio. Esto a menudo implica llamar a servicios o acceder a bases de datos.
+
+    Preparación de la Vista: Una vez que los datos son procesados, el Controller selecciona la vista apropiada y pasa los datos necesarios a esa vista para que se renderice.
+
+    Retorno de Resultados: Devuelve un resultado a la vista o redirige a otra acción, utilizando objetos como ViewResult, RedirectToAction, o JsonResult.
+
+Ejemplo Básico:
+      </p>
+      <pre>
+      <code class="language-csharp">
+  using Microsoft.AspNetCore.Mvc;
+
+public class ClientesController : Controller
+{
+    private readonly IClienteService _clienteService;
+
+    public ClientesController(IClienteService clienteService)
+    {
+        _clienteService = clienteService;
+    }
+
+    // Acción para mostrar una lista de clientes
+    public IActionResult Index()
+    {
+        var clientes = _clienteService.ObtenerTodos();
+        return View(clientes); // Retorna la vista con la lista de clientes
+    }
+
+    // Acción para mostrar el formulario de creación de un cliente
+    public IActionResult Crear()
+    {
+        return View();
+    }
+
+    // Acción para guardar un nuevo cliente
+    [HttpPost]
+    public IActionResult Crear(Cliente cliente)
+    {
+        if (ModelState.IsValid)
+        {
+            _clienteService.Guardar(cliente);
+            return RedirectToAction("Index"); // Redirige a la lista de clientes
+        }
+        return View(cliente); // Vuelve a mostrar el formulario en caso de error
+    }
+}
+      </code>
+      </pre>
+      <p align="justify">
+      Beneficios del uso de Controllers:
+
+    Separación de Preocupaciones: Ayuda a mantener la lógica de la aplicación organizada, separando la lógica de presentación (vista) de la lógica de manejo de solicitudes (controlador).
+    Mantenibilidad: Hace que el código sea más fácil de mantener y probar.
+    Facilidad de Pruebas: Los Controllers son más fáciles de probar unitariamente, ya que puedes simular solicitudes y verificar respuestas.
+
+Los Controllers son fundamentales para el desarrollo de aplicaciones web en ASP.NET, facilitando la implementación de la lógica del lado del servidor y la interacción con los usuarios.
+      </p>
+    </div>
+    <div id="csharp-sql">
+      <br>
+      <h2>Clase - SQL</h2>
+      <p align="justify">
+
+      </p>
+      <pre>
+      <code class="language-csharp">
+  
+      </code>
+      </pre>
+      <p align="justify">
+      
+      </p>
+    </div>
+  </div>
+</body>
+</html>
